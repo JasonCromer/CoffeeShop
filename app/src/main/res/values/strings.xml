@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Coffee Shop</string>
+
+    <string name="literal_search_here">Search here</string>
 </resources>

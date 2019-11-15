@@ -1,43 +1,67 @@
-package com.example.coffeeshop
+package com.example.coffeeshop.coffeesearch
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import com.example.coffeeshop.R
+import com.example.coffeeshop.coffeesearch.adapter.CoffeeSearchAdapter
 import com.example.coffeeshop.util.Resource
 import com.example.coffeeshop.util.classTag
+import com.example.coffeeshop.util.initRecyclerView
 import com.example.coffeeshop.util.initViewModel
+import kotlinx.android.synthetic.main.fragment_coffee_list.*
 
 class CoffeeListFragment : Fragment() {
 
     private val searchViewModel by lazy { initViewModel<CoffeeSearchViewModel>() }
+    private val coffeeSearchAdapter = CoffeeSearchAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
             inflater.inflate(R.layout.fragment_coffee_list, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initAdapter()
         subscribeToViewModel()
+        setListener()
     }
 
-    private fun subscribeToViewModel() {
-        searchViewModel.showDialogEvent.observe(this, Observer {
-            when (it?.status) {
-                Resource.Status.SUCCESS -> {
+    private fun initAdapter() =
+            searchResultsRecyclerView.initRecyclerView(rvAdapter = coffeeSearchAdapter)
 
+    private fun subscribeToViewModel() {
+        searchViewModel.showDialogEvent.observe(this, Observer { result ->
+            when (result?.status) {
+                Resource.Status.SUCCESS -> {
+                    result.data?.let { searchResultDTO ->
+                        coffeeSearchAdapter.setAdapterItems(searchResultDTO.businesses)
+                    }
                 }
                 Resource.Status.ERROR -> {
-
                 }
                 Resource.Status.LOADING -> {
                     return@Observer
                 }
             }
         })
+    }
 
-        searchViewModel.getNearbyCoffeeShops("Coffee", "410 Townsend Street, San Francisco, CA")
+    private fun setListener() {
+        searchEditText.setOnEditorActionListener { textView, actionId, _ ->
+            when (actionId) {
+                EditorInfo.IME_ACTION_NEXT -> {
+                    searchViewModel.getNearbyCoffeeShops(textView.text.toString())
+                    true
+                }
+                else -> {
+                    false
+                }
+            }
+        }
     }
 
     companion object {

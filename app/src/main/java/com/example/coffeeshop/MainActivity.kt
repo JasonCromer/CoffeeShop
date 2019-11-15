@@ -2,6 +2,7 @@ package com.example.coffeeshop
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.coffeeshop.coffeesearch.CoffeeListFragment
 
 class MainActivity : AppCompatActivity() {
 

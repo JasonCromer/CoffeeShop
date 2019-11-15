@@ -1,4 +1,4 @@
-package com.example.coffeeshop
+package com.example.coffeeshop.coffeesearch
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import com.example.coffeeshop.model.SearchResultDTO
 import com.example.coffeeshop.network.RetrofitClient
 import com.example.coffeeshop.network.YelpSearchRepository
-import com.example.coffeeshop.network.service.YelpSearchService
 import com.example.coffeeshop.network.service.api.YelpSearchApiService
 import com.example.coffeeshop.util.Resource
 import com.example.coffeeshop.util.classTag
@@ -15,7 +14,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class CoffeeSearchViewModel() : ViewModel() {
+class CoffeeSearchViewModel : ViewModel() {
 
     private var yelpSearchRepository: YelpSearchRepository =
             YelpSearchRepository(RetrofitClient.getInstance().create(YelpSearchApiService::class.java))
@@ -25,8 +24,8 @@ class CoffeeSearchViewModel() : ViewModel() {
     val showDialogEvent: LiveData<Resource<SearchResultDTO>>
         get() = _showDialogEvent
 
-    fun getNearbyCoffeeShops(term: String, location: String) =
-            disposable.add(yelpSearchRepository.getNearbyCoffeeShops(term, location)
+    fun getNearbyCoffeeShops(location: String) =
+            disposable.add(yelpSearchRepository.getNearbyCoffeeShops(SEARCH_TERM, location)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .map { response ->
@@ -42,5 +41,8 @@ class CoffeeSearchViewModel() : ViewModel() {
 
     companion object {
         private val TAG = classTag<CoffeeSearchViewModel>()
+
+        // We can surface this as a selection to UI in future
+        private const val SEARCH_TERM = "Coffee"
     }
 }

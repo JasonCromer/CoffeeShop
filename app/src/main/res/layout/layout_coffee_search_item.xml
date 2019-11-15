@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/coffeeSearchItemTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lines="1"
+        android:paddingStart="@dimen/content_standard_padding"
+        android:paddingTop="@dimen/content_standard_padding"
+        android:paddingEnd="@dimen/content_standard_padding"
+        android:paddingBottom="@dimen/content_minute_padding"
+        android:textColor="@color/black_carbon"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/coffeeSearchItemPrice"
+        app:layout_constraintStart_toEndOf="@id/coffeeSearchItemImage"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Title" />
+
+    <TextView
+        android:id="@+id/coffeeSearchItemAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lines="2"
+        android:paddingStart="@dimen/content_standard_padding"
+        android:paddingTop="@dimen/content_minute_padding"
+        android:paddingEnd="@dimen/content_standard_padding"
+        android:paddingBottom="@dimen/content_smaller_padding"
+        android:textColor="@color/black_carbon"
+        app:layout_constraintEnd_toStartOf="@id/coffeeSearchItemPrice"
+        app:layout_constraintStart_toEndOf="@id/coffeeSearchItemImage"
+        app:layout_constraintTop_toBottomOf="@id/coffeeSearchItemTitle"
+        tools:text="Address" />
+
+    <ImageView
+        android:id="@+id/coffeeSearchItemImage"
+        android:layout_width="@dimen/image_size_large_square"
+        android:layout_height="@dimen/image_size_large_square"
+        android:layout_marginStart="@dimen/content_standard_padding"
+        android:src="@drawable/ic_coffee"
+        app:layout_constraintBottom_toBottomOf="@id/coffeeSearchItemAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/coffeeSearchItemTitle" />
+
+    <TextView
+        android:id="@+id/coffeeSearchItemPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/content_standard_padding"
+        app:layout_constraintBottom_toBottomOf="@id/coffeeSearchItemAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/coffeeSearchItemTitle"
+        tools:text="$$$" />
+
+    <View
+        android:id="@+id/coffeeSearchItemDivider"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/divider_height"
+        android:background="@color/gray_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/coffeeSearchItemAddress" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
