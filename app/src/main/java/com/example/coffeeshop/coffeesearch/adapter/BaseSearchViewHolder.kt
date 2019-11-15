@@ -10,4 +10,6 @@ import com.example.coffeeshop.model.Business
 abstract class BaseSearchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     abstract fun onBind(business: Business)
+
+    internal fun createLocation(locationArray: List<String>) = locationArray.joinToString { it }
 }

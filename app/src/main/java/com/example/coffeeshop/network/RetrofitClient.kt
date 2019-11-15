@@ -6,17 +6,18 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 /**
- * A Singleton Retrofit Client.
- *
- * Using Dependency Injection would make this a lot cleaner!
+ * A Singleton Retrofit Client
  */
 object RetrofitClient {
 
     private const val BASE_URL = "https://api.yelp.com/"
 
-    // I know... I hate it too, but it's just for the sake of this project.
+    /**
+     * I know... I hate it too, but it's just for the sake of this project.
+     */
     private const val API_TOKEN = "gEvpbKnzOhJS6tkrDzv9NySF3YWt9T9NiGrDBf1ISLKhZaTu" +
             "kqp1RAL3KUt1k3DOJxJ1_yiJYDWACMcTSnpBdtpmZ6otCypOWBHfi59oOmCsNyY4DFKzWF-4jXjLXXYx"
+
     private var retrofitClient: Retrofit? = null
 
     /**

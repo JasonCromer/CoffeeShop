@@ -8,9 +8,6 @@ import java.io.IOException
 
 /**
  * Service Handling Search Api calls
- *
- * Injecting an instance of [YelpSearchApiService] here would be nicer with Dagger2 instead of
- * passing in one!
  */
 class YelpSearchService(private val yelpSearchApiService: YelpSearchApiService) {
 

@@ -2,4 +2,5 @@
     <string name="app_name">Coffee Shop</string>
 
     <string name="literal_search_here">Search here</string>
+    <string name="generic_error_message">Whoops! Something went wrong. Please try again.</string>
 </resources>

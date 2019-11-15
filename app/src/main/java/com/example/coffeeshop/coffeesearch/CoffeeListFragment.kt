@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.example.coffeeshop.R
@@ -20,7 +21,9 @@ class CoffeeListFragment : Fragment() {
     private val searchViewModel by lazy { initViewModel<CoffeeSearchViewModel>() }
     private val coffeeSearchAdapter = CoffeeSearchAdapter()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+    override fun onCreateView(inflater: LayoutInflater,
+                              container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? =
             inflater.inflate(R.layout.fragment_coffee_list, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,6 +45,8 @@ class CoffeeListFragment : Fragment() {
                     }
                 }
                 Resource.Status.ERROR -> {
+                    Toast.makeText(
+                            context, R.string.generic_error_message, Toast.LENGTH_SHORT).show()
                 }
                 Resource.Status.LOADING -> {
                     return@Observer

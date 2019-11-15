@@ -16,6 +16,4 @@ class CoffeeItemViewHolder(itemView: View) : BaseSearchViewHolder(itemView) {
                 Glide.with(context).load(business.imageUrl)
                         .placeholder(R.drawable.ic_coffee).centerCrop().into(coffeeSearchItemImage)
             }
-
-    private fun createLocation(locationArray: List<String>) = locationArray.joinToString { it }
 }

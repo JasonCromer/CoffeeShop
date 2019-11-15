@@ -3,7 +3,6 @@ package com.example.coffeeshop.network.service.api
 import com.example.coffeeshop.model.SearchResultDTO
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.Query
 
 interface YelpSearchApiService {
