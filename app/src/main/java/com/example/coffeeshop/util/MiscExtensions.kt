@@ -1,14 +1,18 @@
 package com.example.coffeeshop.util
 
+import android.app.Activity
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.RuntimeException
 
 inline fun <reified T : Any> classTag(): String = T::class.java.simpleName
@@ -41,3 +45,8 @@ inline fun <reified VH : RecyclerView.ViewHolder> RecyclerView.initRecyclerView(
             layoutManager = rvLayoutManager
             adapter = rvAdapter
         }
+
+fun Activity.hideKeyboard() {
+    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.hideSoftInputFromWindow(contentView.windowToken, 0)
+}

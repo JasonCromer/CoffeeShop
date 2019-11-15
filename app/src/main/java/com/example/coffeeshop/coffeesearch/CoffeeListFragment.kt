@@ -12,6 +12,7 @@ import com.example.coffeeshop.R
 import com.example.coffeeshop.coffeesearch.adapter.CoffeeSearchAdapter
 import com.example.coffeeshop.util.Resource
 import com.example.coffeeshop.util.classTag
+import com.example.coffeeshop.util.hideKeyboard
 import com.example.coffeeshop.util.initRecyclerView
 import com.example.coffeeshop.util.initViewModel
 import kotlinx.android.synthetic.main.fragment_coffee_list.*
@@ -60,6 +61,7 @@ class CoffeeListFragment : Fragment() {
             when (actionId) {
                 EditorInfo.IME_ACTION_NEXT -> {
                     searchViewModel.getNearbyCoffeeShops(textView.text.toString())
+                    hideKeyboard()
                     true
                 }
                 else -> {
@@ -68,6 +70,8 @@ class CoffeeListFragment : Fragment() {
             }
         }
     }
+
+    private fun hideKeyboard() = activity?.hideKeyboard()
 
     companion object {
         val TAG = classTag<CoffeeListFragment>()
