@@ -6,6 +6,7 @@ package com.example.coffeeshop.util
  * This represents a simple resource from the network that our services will return
  * to indicate success or failure.
  */
+@Suppress("unused")
 class Resource<out T> private constructor(val status: Status,
                                           val data: T? = null,
                                           val error: Exception? = null) {
@@ -15,8 +16,6 @@ class Resource<out T> private constructor(val status: Status,
         ERROR,
         LOADING
     }
-
-    fun isSuccessfulWithData(): Boolean = status == Status.SUCCESS && data != null
 
     companion object {
         fun <T> success(data: T) = Resource(Status.SUCCESS, data)

@@ -16,8 +16,8 @@ class CoffeeApplication : Application() {
 
     private fun initDagger() {
         appComponent = DaggerAppComponent.builder()
-            .appModule(AppModule(this))
-            .build()
+                .appModule(AppModule(this))
+                .build()
         appComponent.inject(this)
     }
 }
