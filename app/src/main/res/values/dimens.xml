@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="content_minute_padding">4dp</dimen>
-    <dimen name="content_tiny_padding">8dp</dimen>
-    <dimen name="content_smaller_padding">12dp</dimen>
-    <dimen name="content_small_padding">16dp</dimen>
+    <dimen name="content_small_padding">12dp</dimen>
     <dimen name="content_standard_padding">24dp</dimen>
-    <dimen name="content_large_padding">40dp</dimen>
-    <dimen name="content_xlarge_padding">56dp</dimen>
-    <dimen name="content_xxlarge_padding">72dp</dimen>
 
     <dimen name="image_size_large_square">36dp</dimen>
     <dimen name="divider_height">1dp</dimen>

@@ -32,7 +32,7 @@
         android:paddingStart="@dimen/content_standard_padding"
         android:paddingTop="@dimen/content_minute_padding"
         android:paddingEnd="@dimen/content_standard_padding"
-        android:paddingBottom="@dimen/content_smaller_padding"
+        android:paddingBottom="@dimen/content_small_padding"
         android:textColor="@color/black_carbon"
         app:layout_constraintEnd_toStartOf="@id/coffeeSearchItemPrice"
         app:layout_constraintStart_toEndOf="@id/coffeeSearchItemImage"
@@ -44,10 +44,10 @@
         android:layout_width="@dimen/image_size_large_square"
         android:layout_height="@dimen/image_size_large_square"
         android:layout_marginStart="@dimen/content_standard_padding"
-        android:src="@drawable/ic_coffee"
         app:layout_constraintBottom_toBottomOf="@id/coffeeSearchItemAddress"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/coffeeSearchItemTitle" />
+        app:layout_constraintTop_toTopOf="@id/coffeeSearchItemTitle"
+        tools:src="@drawable/ic_coffee" />
 
     <TextView
         android:id="@+id/coffeeSearchItemPrice"
