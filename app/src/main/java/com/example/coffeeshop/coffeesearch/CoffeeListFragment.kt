@@ -38,7 +38,7 @@ class CoffeeListFragment : Fragment() {
             searchResultsRecyclerView.initRecyclerView(rvAdapter = coffeeSearchAdapter)
 
     private fun subscribeToViewModel() {
-        searchViewModel.showDialogEvent.observe(this, Observer { result ->
+        searchViewModel.searchResultLiveData.observe(this, Observer { result ->
             when (result?.status) {
                 Resource.Status.SUCCESS -> {
                     result.data?.let { searchResultDTO ->
@@ -60,8 +60,10 @@ class CoffeeListFragment : Fragment() {
         searchEditText.setOnEditorActionListener { textView, actionId, _ ->
             when (actionId) {
                 EditorInfo.IME_ACTION_NEXT -> {
-                    searchViewModel.getNearbyCoffeeShops(textView.text.toString())
-                    hideKeyboard()
+                    if (!textView.text.isNullOrBlank()) {
+                        searchViewModel.getNearbyCoffeeShops(textView.text.toString())
+                        hideKeyboard()
+                    }
                     true
                 }
                 else -> {

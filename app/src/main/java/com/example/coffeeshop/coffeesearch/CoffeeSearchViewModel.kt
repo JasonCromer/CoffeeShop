@@ -23,11 +23,11 @@ class CoffeeSearchViewModel(application: Application) : AndroidViewModel(applica
     private val disposable = CompositeDisposable()
 
     /**
-     * Kotlin-idiomatic why to protect public immutability of LiveData
+     * Kotlin-idiomatic way to protect public immutability of LiveData
      */
-    private val _showDialogEvent = MutableLiveData<Resource<SearchResultDTO>>()
-    val showDialogEvent: LiveData<Resource<SearchResultDTO>>
-        get() = _showDialogEvent
+    private val _searchResultLiveData = MutableLiveData<Resource<SearchResultDTO>>()
+    val searchResultLiveData: LiveData<Resource<SearchResultDTO>>
+        get() = _searchResultLiveData
 
     init {
         (application as CoffeeApplication).appComponent.inject(this)
@@ -41,7 +41,7 @@ class CoffeeSearchViewModel(application: Application) : AndroidViewModel(applica
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .map { response ->
-                        _showDialogEvent.value = response
+                        _searchResultLiveData.value = response
                     }
                     .subscribe({
                         Log.d(TAG, "Successfully fetched coffee shops")
